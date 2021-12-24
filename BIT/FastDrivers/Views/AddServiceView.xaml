@@ -1,0 +1,90 @@
+﻿<Page x:Class="FastDrivers.Views.AddServiceView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FastDrivers.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddServiceView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="#FCA146">
+            <Label  Content="Add New Service" Foreground="White" FontSize="32"></Label>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="6"  Background="#FABF83" ></StackPanel>
+                
+                <!--Row 2 i.e Grid.Row=1-->
+                <Label Content="Service Date: " Grid.Row="1" Grid.Column="1" />
+                <DatePicker Grid.Row="1" Grid.Column="2" SelectedDate="{Binding Request.RequestDate}" DisplayDate="{Binding DateTime.Now}" Margin="0,0,2,0"/>
+                <Label Content="Time of Service: " Grid.Row="1" Grid.Column="4" />
+                <ComboBox Grid.Row="1" Grid.Column="5" SelectedValue="{Binding Request.ServiceTime, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Request.ErrorCollection[ServiceTime]}" 
+                          ItemsSource="{Binding Request.AllTimeSlots}" DisplayMemberPath="SlotStartTime" SelectedValuePath="SlotStartTime" Margin="0,0,2,0"/>
+
+                <!--Row 4 i.e Grid.Row=3-->
+                <Label Content="Skills for Service: " Grid.Row="3" Grid.Column="1" />
+                <ComboBox Grid.Row="3" Grid.Column="2" SelectedValue="{Binding Request.SkillRequestName, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Request.ErrorCollection[SkillRequestName]}" 
+                          ItemsSource="{Binding Request.AllSkills}" DisplayMemberPath="SkillName" SelectedValuePath="SkillName" Margin="0,0,2,0"/>
+                
+                <Label Content="Preffered Rating: " Grid.Row="3" Grid.Column="4" />
+                <ComboBox Grid.Row="3" Grid.Column="5" SelectedValue="{Binding Request.RatingRequest}" 
+                          ItemsSource="{Binding Request.AllContractors}" DisplayMemberPath="Rating" SelectedValuePath="Rating" Margin="0,0,2,0"/>
+
+                <!--Row 6 i.e Grid.Row=5-->
+                <Label Content="Client ID: " Grid.Row="5" Grid.Column="1" />
+                <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding SelectedClient.ClientId, Mode=TwoWay}" Background="White" Margin="0,0,2,0"></TextBlock>
+                <Label Content="Client Name: " Grid.Row="5" Grid.Column="4" />
+                <TextBlock Grid.Row="5" Grid.Column="5" Text="{Binding SelectedClient.FirstName, Mode=TwoWay}" Background="White" Margin="0,0,2,0"></TextBlock>
+
+                <!--Row 8 i.e Grid.Row=7-->
+                <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5" Margin="0,5,0,5">
+                    <Button Command="{Binding FindCommand}" Content="Find Sessions" Background="#FCA146" ></Button>
+                </StackPanel>
+
+                <!--Row 10 i.e Grid.Row=9-->
+                <DataGrid Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="5" Background="#FABF83" Margin="5,5,5,5" SelectedItem="{Binding SelectedSession}" ItemsSource="{Binding Sessions, Mode=TwoWay}">
+                    <DataGrid.Columns></DataGrid.Columns>
+                </DataGrid>
+
+                <!--Row 12 i.e Grid.Row=11-->
+                <StackPanel Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="5">
+                    <Button Command="{Binding ConfirmCommand}" Content="Confirm Session" Background="#FCA146" ></Button>
+                </StackPanel>
+
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

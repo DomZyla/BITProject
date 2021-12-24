@@ -1,0 +1,105 @@
+﻿<Page x:Class="FastDrivers.Views.AddSkillView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FastDrivers.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddSkillView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="#FCA146">
+            <Label Content="Add Skill To Contractor" Foreground="White" FontSize="32"></Label>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="131*"></ColumnDefinition>
+                    <ColumnDefinition Width="73*"></ColumnDefinition>
+                    <ColumnDefinition Width="189*"/>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="131*"></ColumnDefinition>
+                    <ColumnDefinition Width="261*"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" x:Name="dgSkills" Background="#FABF83" Margin="5,5,0,5" AutoGenerateColumns="False" SelectedItem="{Binding SelectedContractorSkill, Mode=TwoWay}" ItemsSource="{Binding ContractorSkills, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Skill ID" Binding="{Binding SkillId}"/>
+                        <DataGridTextColumn Header="SkillName" Binding="{Binding SkillName}"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+                <Grid Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Background="#FABF83" Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="1.7*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Content="Contractor/Skill Details:" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" FontSize="14" FontWeight="Bold"></Label>
+                        <Label Content="ContractorID:" Grid.Row="1" Grid.Column="0" FontSize="14"></Label>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" Background="White" Text="{Binding SelectedContractor.ContractorId, Mode=TwoWay}"></TextBlock>
+                        <Label Content="First Name:" Grid.Row="2" Grid.Column="0" FontSize="14"></Label>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" Background="White" Text="{Binding SelectedContractor.FirstName, Mode=TwoWay}"></TextBlock>
+                        <Label Content="Last Name:" Grid.Row="3" Grid.Column="0" FontSize="14"></Label>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" Background="White" Text="{Binding SelectedContractor.LastName, Mode=TwoWay}"></TextBlock>
+                        <Label Content="Skill Name:" Grid.Row="4" Grid.Column="0" FontSize="14"></Label>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" Text="{Binding SelectedContractorSkill.SkillName, Mode=TwoWay}"></TextBox>
+                        <Label Content="Description:" Grid.Row="5" Grid.Column="0" FontSize="14"></Label>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="5,5,5,5" Text="{Binding SelectedContractorSkill.Description, Mode=TwoWay}"></TextBox>
+                    </Grid>
+
+                </Grid>
+
+                <StackPanel Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="3">
+                    <Button Command="{Binding AssignCommand}" Margin="10,10,10,0" Background="#FCA146" Content="Confirm Skill"></Button>
+                    <Button Command="{Binding DeleteCommand}" Margin="10,10,10,10" Background="#FCA146" Content="Delete Skill"></Button>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Background="#FCA146" Margin="5,10,5,30">
+                    <Label Content="Current Contractor Skills" Foreground="White" FontSize="16"></Label>
+                </StackPanel>
+
+                <DataGrid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" x:Name="dgCurrentSkills" Background="#FABF83" Margin="5,-15,0,0" AutoGenerateColumns="False" SelectedItem="{Binding SelectedContractorSkill, Mode=TwoWay}" ItemsSource="{Binding CurrentSkills, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Skill ID" Binding="{Binding SkillId}"/>
+                        <DataGridTextColumn Header="SkillName" Binding="{Binding SkillName}"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

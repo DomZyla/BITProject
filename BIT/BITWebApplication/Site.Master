@@ -1,0 +1,97 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BITWebApplication.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+        <title>BIT Application</title>
+
+        <%-- Bootstrap css --%>
+
+        <link href="BootStrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="Content/Site.css" rel="stylesheet" />
+
+        <%-- Font awesome css --%>
+
+        <link href="FontAwesome/css/all.css" rel="stylesheet" />
+
+        <%-- jquery --%>
+
+        <script src="BootStrap/js/bootstrap.min.js" ></script>
+
+        <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+
+        </asp:ContentPlaceHolder>
+
+    </head>
+    <body>
+            <form id="form1" runat="server">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="HomePage.aspx"> 
+                    <img src="images/Images/BITLogo.PNG" alt="BIT Logo" width="90" height="90"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="HomePage.aspx">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="About.aspx">About Us</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="Contact.aspx">Contact Us</a>
+            </li>
+        </ul>
+
+        <ul class="nav-right">
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkNewBooking" CausesValidation="false" runat="server" OnClick="lnkNewBooking_Click" Visible="false">New Booking</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkCurrentBookings" CausesValidation="false" runat="server" OnClick="lnkCurrentBookings_Click" Visible="false">Current Bookings</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkUpdateBookings" CausesValidation="false" runat="server" OnClick="lnkUpdateBookings_Click" Visible="false">Update Bookings</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkManageBookings" CausesValidation="false" runat="server" OnClick="lnkManageBookings_Click" Visible="false">Manage Bookings</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkCreateBooking" CausesValidation="false" runat="server" OnClick="lnkCreateBooking_Click" Visible="false">Create Booking</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkBtnLogin" CausesValidation="false" runat="server" OnClick="lnkBtnLogin_Click">Login</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkBtnSignUp" CausesValidation="false" runat="server" OnClick="lnkBtnSignUp_Click">Sign Up</asp:LinkButton>
+            </li>
+            <li class="nav-item">
+                <asp:LinkButton cssClass="nav-link" ID="lnkBtnLogout" CausesValidation="false" runat="server" OnClick="lnkBtnLogout_Click" Visible="false">Log out</asp:LinkButton>
+            </li>
+        </ul>
+        </div>
+    </nav>
+                 <br />
+            <div>
+                <asp:Label style="font-size:xx-large;" ID="lblWelcomeMsg" runat="server" />
+            </div>
+                 <br />
+                    <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+
+                    <br />
+                    <footer>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>&copy All rights Reserved <a href="#"> BIT</a></p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </form>
+    </body>
+</html>

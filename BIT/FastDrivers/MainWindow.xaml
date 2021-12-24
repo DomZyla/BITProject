@@ -1,0 +1,96 @@
+﻿<Window x:Class="FastDrivers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FastDrivers"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <Grid>
+        <Grid Visibility="{Binding ShowMenu}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="3"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3"></ColumnDefinition>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="3"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="3"></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Background="#FABF83" />
+            <StackPanel Grid.Row="0" Grid.Column="1" Background="#FABF83" />
+            <StackPanel Grid.Row="0" Grid.Column="2" Background="#FABF83" />
+            <StackPanel Grid.Row="0" Grid.Column="3" Background="#FABF83" />
+            <StackPanel Grid.Row="0" Grid.Column="4" Background="#FABF83" />
+            <StackPanel Grid.Row="1" Grid.Column="0" Background="#FABF83" />
+            <StackPanel Grid.Row="1" Grid.Column="1" Background="Black" />
+            <StackPanel Grid.Row="1" Grid.Column="2" Background="Black" />
+            <StackPanel Grid.Row="1" Grid.Column="3" Background="Black" />
+            <StackPanel Grid.Row="1" Grid.Column="4" Background="#FABF83" />
+            <StackPanel Grid.Row="2" Grid.Column="0" Background="#FABF83" />
+            <StackPanel Grid.Row="2" Grid.Column="1" Background="Black" />
+            <StackPanel Grid.Row="2" Grid.Column="3" Background="Black" />
+            <StackPanel Grid.Row="3" Grid.Column="0" Background="#FABF83" />
+            <StackPanel Grid.Row="3" Grid.Column="1" Background="Black" />
+            <StackPanel Grid.Row="3" Grid.Column="2" Background="Black" />
+            <StackPanel Grid.Row="3" Grid.Column="3" Background="Black" />
+            <StackPanel Grid.Row="3" Grid.Column="4" Background="#FABF83" />
+            <StackPanel Grid.Row="4" Grid.Column="0" Background="#FABF83" />
+            <StackPanel Grid.Row="4" Grid.Column="1" Background="#FABF83" />
+            <StackPanel Grid.Row="4" Grid.Column="2" Background="#FABF83" />
+            <StackPanel Grid.Row="4" Grid.Column="3" Background="#FABF83" />
+            <StackPanel Grid.Row="4" Grid.Column="4" Background="#FABF83">
+                <TextBox Background="#FABF83" BorderThickness="0" Text="BIT Back Office App                         Version 1.0 "></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="4" Background="#FABF83">
+                <Image Source="./images/BITLogo.png" Margin="75,0,75,0"/>
+                <Button Content="Client Management" FontSize="16" Height="50" Foreground="White" BorderBrush="Black" Background="#FCA146" Margin="0,10,0,-1" x:Name="btnClientManagement" Click="btnClientManagement_Click"></Button>
+                <Button Content="Contractor Management" FontSize="16" Height="50" Foreground="White" BorderBrush="Black" Background="#FCA146" Margin="0,0,0,-1" x:Name="btnContractorManagement" Click="btnContractorManagement_Click"></Button>
+                <Button Content="Coordinator Management" Visibility="{Binding ShowCoordinator}" FontSize="16" Height="50" Foreground="White" BorderBrush="Black" Background="#FCA146" Margin="0,0,0,-1" x:Name="btnCoordinatorManagement" Click="btnCoordinatorManagement_Click"></Button>
+                <Button Content="Service Management" FontSize="16" Height="50" Foreground="White" BorderBrush="Black" Background="#FCA146" Margin="0,0,0,-1" x:Name="btnServiceManagement" Click="btnServiceManagement_Click"></Button>
+                <Button Content="Skills Management" FontSize="16" Height="50" Foreground="White" BorderBrush="Black" Background="#FCA146" Margin="0,0,0,-1" x:Name="btnSkillsManagement" Click="btnSkillsManagement_Click"></Button>
+                <Button Content="Logout" FontSize="16" Height="50" Foreground="white" BorderBrush="Black" Background="#FCA146" Margin="0,0,0,-1" x:Name="btnLogout" Click="Logout_Click"></Button>
+            </StackPanel>
+
+            <Frame Grid.Row="2" Grid.Column="2" x:Name="ContentFrame"></Frame>
+
+        </Grid>
+        <Grid Background="#FCA146" Visibility="{Binding ShowLogin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Label Content="BIT Back Office" Foreground="White" FontSize="42" Margin="145,15,145,15"/>
+            </StackPanel>
+            <Border BorderThickness="2" BorderBrush="black" Grid.Column="1" Grid.Row="1" Margin="50">
+                <StackPanel>
+                    <Label Content="Login" Foreground="White" FontSize="40" Margin="5"></Label>
+                    
+                    <Label Content="Username:" Foreground="White" FontSize="20" Margin="5"></Label>
+                    <TextBox Height="28" Margin="5" FontSize="18" Text="{Binding UserName}"></TextBox>
+
+                    <Label Content="Password:" Foreground="White" FontSize="20" Margin="5"></Label>
+                    <TextBox Height="28" Margin="5" FontSize="18" Text="{Binding Password}"></TextBox>
+
+                    <Button Command="{Binding LoginCommand}" Content="Login" Foreground="White" Height="34" FontSize="20"  Margin="5" Background="Black"></Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
