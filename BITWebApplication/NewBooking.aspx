@@ -7,6 +7,7 @@
 
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-md-6">
                 <label>Skills for Service</label>
                 <div class="form-group">
